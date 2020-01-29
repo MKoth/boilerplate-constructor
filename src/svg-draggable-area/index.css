@@ -1,0 +1,8 @@
+.App svg {
+    width:100%;
+    height:99vh;
+}
+.draggable {
+    cursor: move;
+}
+  
