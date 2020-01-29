@@ -6,23 +6,28 @@ export default {
 			x:5,
 			y:5,
 			inputs: [
-				{name: "test input"},
-				{name: "test input2"}
+				{name: "test input"}
 			],
 			outputs: [
 				{name: "test output"}
-			],
+			]
 		},
 		{
 			x:45,
 			y:10,
 			inputs: [
+				{name: "test input1"},
 				{name: "test input2"}
 			],
 			outputs: [
-				{name: "test output"},
-				{name: "test output2"}
+				{name: "test output"}
 			],
+		}
+	],
+	connections:[
+		{
+			from:{block:0, output:0},
+			to:{block:1, input:1},
 		}
 	]
 };

@@ -3,6 +3,7 @@ import './index.css';
 import SvgBlock from './svg-block';
 import reducer, { initialState } from './reducers';
 import { startDragging, processDragging, stopDragging } from './actions';
+import Connection from "./svg-connection"
 
 function SvgDraggableArea() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -21,6 +22,9 @@ function SvgDraggableArea() {
       <rect x="0" y="0" width="100" height="100" fill="#fafafa"/>
       {state.blocks.map((block, index) => (
         <SvgBlock key={index} {...block} id={index}></SvgBlock>
+      ))}
+      {state.connections.map((connection, index) => (
+        <Connection key={index} connection={connection} blocks={state.blocks} id={index}></Connection>
       ))}
     </svg>
   );

@@ -18,7 +18,7 @@ function SvgBlock({x,y, id, inputs, outputs}) {
         height={calculateBlockHeight()} 
         className="draggable" 
         rx="1" ry="1"
-        style={{strokeWidth:0.3,stroke:"rgb(55,55,55)", fill:"#eeeeee"}}
+        style={{strokeWidth:0.2,stroke:"rgb(55,55,55)", fill:"#eeeeee"}}
       />
       {inputs.map((input, index) => (
         <Connector type={'input'} key={index} id={index} {...input} {...{x,y}}></Connector>

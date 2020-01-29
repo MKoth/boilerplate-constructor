@@ -8,7 +8,7 @@ function Connector({x, y, type, id}) {
   return (
 		<circle 
 			cx={type=="input"?x:x+width} cy={y+height/2+(height/2)*id} r={config.inputOutputRad} 
-			style={{strokeWidth:0.3,stroke:"rgb(55,55,55)", fill:"#bbbbbb"}}
+			style={{strokeWidth:0.2,stroke:"rgb(55,55,55)", fill:"#bbbbbb"}}
 		/>
   );
 }
