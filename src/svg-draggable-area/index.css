@@ -5,4 +5,7 @@
 .draggable {
     cursor: move;
 }
+.temp-connection{
+    pointer-events: none;
+}
   

@@ -11,3 +11,20 @@ export function getOffset(block, mousePos) {
 	offset.y = block.y - mousePos.y;
 	return offset;
 }
+export function getSvgAttr(target, attributeName, type) {
+	if(type === 'integer')
+		return parseInt(target.getAttributeNS(null, attributeName));
+	if(type === 'float')
+		return parseFloat(target.getAttributeNS(null, attributeName));
+	return target.getAttributeNS(null, attributeName);
+}
+export function getConnectorsAttr(target) {
+	const draggedConId = getSvgAttr(target, "data-svg-connector-id", "integer");
+	const draggedConBlockId = getSvgAttr(target, "data-svg-connector-block-id", "integer");
+	const draggedConBlockType = getSvgAttr(target, "data-svg-connector-type");
+	return {draggedConId, draggedConBlockId, draggedConBlockType}
+}
+export function getBlockAttr(target) {
+	const id = parseInt(target.getAttributeNS(null, "data-svg-block-id"));
+	return {id};
+}

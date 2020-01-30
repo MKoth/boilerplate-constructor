@@ -1,6 +1,13 @@
 export default {
 	draggedId: null,
 	offset: {x:0, y:0},
+
+	draggedConId: null,
+	draggedConBlockId: null,
+	draggedConBlockType: null,
+	conStartPos: {x:0, y:0},
+	conEndPos: {x:0, y:0},
+
 	blocks:[
 		{
 			x:5,
