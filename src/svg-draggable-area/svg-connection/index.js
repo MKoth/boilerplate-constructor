@@ -1,5 +1,6 @@
 import React from 'react';
 import config from '../draggable-area.config';
+import RemoveConnection from './removeConnection';
 
 function Connection({blocks, connection}) {
 	function getLineStart(){
@@ -26,8 +27,11 @@ function Connection({blocks, connection}) {
 		return stroke;
 	}
   return (
+		<>
 		<path d={getPathCoords()} stroke="#333333" fill="transparent" style={{strokeWidth:0.4}}/>
-  );
+		<RemoveConnection blocks={blocks} connection={connection}></RemoveConnection>
+		</>
+	);
 }
 
 export default Connection;
