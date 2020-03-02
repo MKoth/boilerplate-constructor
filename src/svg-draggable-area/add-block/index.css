@@ -1,4 +1,4 @@
-.AddBlock {
+.addBlock {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -12,4 +12,62 @@
   top: 5px;
   left: 5px;
   cursor: pointer;
+}
+.blocksInventory{
+  background: #ffffff;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+}
+.blocksInventory h2{
+  margin:0px;
+  text-align: center;
+}
+.closeInventory {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: #a3dedd;
+  border: #7fbbbb solid 2px;
+  font-size: 14px;
+  line-height: 25px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  color: #fff;
+  font-weight: bold;
+}
+.closeInventory:hover{
+  cursor: pointer;
+  background: #00bfd8;
+  border: #007e96 solid 2px;
+}
+.inventoryHolder{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: space-around;
+  align-items: flex-start;
+}
+.blocksHolder {
+  min-width: 100px;
+  height: 50px;
+  background: #00bfd8;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+  line-height: 48px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: bold;
+  border: 2px solid #007e96;
+}
+.blocksHolder:hover{
+  background: #009eb3;
+  border: 2px solid #015869;
+  cursor: pointer;
+  color: #dff3fb;
 }

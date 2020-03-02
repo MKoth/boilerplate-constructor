@@ -20,7 +20,8 @@ export default [
       {id:"role", type:"set", data:{name:"Add role", fields:["role_name"]}},
       {id:"role_name", type:"text", data:{name:"Role name", value:"", noRepeat:true}}
     ],
-    output:[
+    sets_values:[],
+    outputs:[
       {id:"login_page", name:"Login page"},
       {id:"admin_page", name:"Admin page"},
       {id:"admin", name:"Admin"},
@@ -28,7 +29,7 @@ export default [
       {id:"user", name:"User"},
       {id:"%role_name%", name:"%role_name%", type:"set_connected", set:"role"}
     ],
-    input:[]
+    inputs:[]
   },
   {
     type:"router", 
@@ -39,8 +40,8 @@ export default [
       {id:"layout", type:"radio", data:{name:"With nav layout", value:"with_nav"}},
       {id:"layout", type:"radio", data:{name:"Without nav layout", value:"without_nav"}},
     ],
-    output:[],
-    input:[
+    outputs:[],
+    inputs:[
       {id:"router", name:"Router"},
       {id:"active", name:"Active"},
       {id:"start_page", name:"Start page"},
@@ -67,8 +68,9 @@ export default [
       {id:"sortable", type:"checkbox", data:{name:"Sortable", value:false}},
       {id:"filterable", type:"checkbox", data:{name:"Filterable", value:false}},
     ],
-    input:[],
-    output:[
+    sets_values:[],
+    inputs:[],
+    outputs:[
       {id:"table_route", name:"Table route"},
       {id:"add_route", name:"Add route"},
       {id:"edit_route", name:"Edit route"},
@@ -100,8 +102,9 @@ export default [
       {id:"sortable", type:"checkbox", data:{name:"Sortable", value:false}},
       {id:"filterable", type:"checkbox", data:{name:"Filterable", value:false}},
     ],
-    input:[],
-    output:[
+    sets_values:[],
+    inputs:[],
+    outputs:[
       {id:"prod_page", name:"Product page"},
       {id:"prod_edit_page", name:"Product edit page"},
       {id:"prods_page", name:"Products list page"},
@@ -117,7 +120,7 @@ export default [
     x:0,
     y:0,
     options:[],
-    input:[],
-    output:[]
+    inputs:[],
+    outputs:[]
   },
 ]

@@ -10,3 +10,5 @@ export const STOP_CONNECTION_DRAGGING = `${prefix}STOP_CONNECTION_DRAGGING`;
 
 export const ADD_NEW_CONNECTION = `${prefix}ADD_NEW_CONNECTION`;
 export const REMOVE_CONNECTION = `${prefix}REMOVE_CONNECTION`;
+
+export const ADD_NEW_BLOCK = `${prefix}ADD_NEW_BLOCK`;
