@@ -1,5 +1,5 @@
 export default {
-	draggedId: null,
+	draggedIndex: null,
 	offset: {x:0, y:0},
 
 	draggedConId: null,
@@ -9,7 +9,7 @@ export default {
 	conEndPos: {x:0, y:0},
 
 	blocks:[
-		{
+		/*{
 			x:5,
 			y:5,
 			inputs: [
@@ -29,12 +29,12 @@ export default {
 			outputs: [
 				{name: "test output"}
 			],
-		}
+		}*/
 	],
 	connections:[
-		{
+		/*{
 			from:{block:0, output:0},
 			to:{block:1, input:1},
-		}
+		}*/
 	]
 };

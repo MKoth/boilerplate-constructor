@@ -2,17 +2,20 @@ import React from 'react';
 import config from '../draggable-area.config';
 import RemoveConnection from './removeConnection';
 
-function Connection({blocks, connection}) {
+function Connection(props) {
+	const {blocks, from, to, id} = props;
 	function getLineStart(){
-		const fromBlock =  blocks[connection.from.block];
+		const fromBlock =  blocks.find(block=>block.id===from.block);
+		const outputConn = fromBlock.outputs.find(output=>output.id===from.output);
 		const startX = fromBlock.x + config.minBlockwidth + config.inputOutputRad/2 + 0.5;
-		const startY = fromBlock.y + config.minBlockHeight/2 + config.minBlockHeight/2*connection.from.output;
+		const startY = fromBlock.y + config.minBlockHeight/2 + config.minBlockHeight/2*fromBlock.outputs.indexOf(outputConn);
 		return {startX, startY};
 	}
 	function getLineEnd(){
-		const toBlock =  blocks[connection.to.block];
+		const toBlock =  blocks.find(block=>block.id===to.block);
+		const inputConn = toBlock.inputs.find(input=>input.id===to.input);
 		const endX = toBlock.x - config.inputOutputRad/2 - 0.5;
-		const endY = toBlock.y + config.minBlockHeight/2 + config.minBlockHeight/2*connection.to.input;
+		const endY = toBlock.y + config.minBlockHeight/2 + config.minBlockHeight/2*toBlock.inputs.indexOf(inputConn);
 		return {endX, endY};
 	}
 	function getPathCoords(){
@@ -29,7 +32,7 @@ function Connection({blocks, connection}) {
   return (
 		<>
 		<path d={getPathCoords()} stroke="#333333" fill="transparent" style={{strokeWidth:0.4}}/>
-		<RemoveConnection blocks={blocks} connection={connection}></RemoveConnection>
+		<RemoveConnection {...props}></RemoveConnection>
 		</>
 	);
 }

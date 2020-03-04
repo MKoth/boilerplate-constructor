@@ -19,13 +19,13 @@ export function getSvgAttr(target, attributeName, type) {
 	return target.getAttributeNS(null, attributeName);
 }
 export function getConnectorsAttr(target) {
-	const draggedConId = getSvgAttr(target, "data-svg-connector-id", "integer");
-	const draggedConBlockId = getSvgAttr(target, "data-svg-connector-block-id", "integer");
+	const draggedConId = getSvgAttr(target, "data-svg-connector-id");
+	const draggedConBlockId = getSvgAttr(target, "data-svg-connector-block-id");
 	const draggedConBlockType = getSvgAttr(target, "data-svg-connector-type");
 	return {draggedConId, draggedConBlockId, draggedConBlockType}
 }
 export function getBlockAttr(target) {
-	const id = parseInt(target.getAttributeNS(null, "data-svg-block-id"));
+	const id = target.getAttributeNS(null, "data-svg-block-id");
 	return {id};
 }
 export function guidGenerator() {

@@ -1,6 +1,5 @@
 import { START_CONNECTION_DRAGGING, STOP_CONNECTION_DRAGGING, PROCESS_CONNECTION_DRAGGING, ADD_NEW_CONNECTION } from './actionTypes';
 import { getMousePosition, getConnectorsAttr } from '../helpers';
-import _ from 'lodash';
 
 export const startConDragging = (event, svg, {draggedConId, draggedConBlockType, draggedConBlockId}) => {
 	const conStartPos = getMousePosition(event, svg);
@@ -22,14 +21,16 @@ export const stopConDragging = (event, {draggedConBlockType, draggedConBlockId, 
 					draggedConBlockId:dropConBlockId, 
 					draggedConBlockType:dropConBlockType } = getConnectorsAttr(event.target);
 	//check if attributes exists and connection types are not the same (e.x. input=input or output=output)
-	if(	!isNaN(dropConId)&&!isNaN(dropConBlockId)&&dropConBlockType&&
+	if(	dropConId&&dropConBlockId&&dropConBlockType&&
 			canConnect(draggedConBlockType, dropConBlockType, draggedConBlockId, dropConBlockId)
 	){
 		//if exists creating a new connection 
 		let newConnection = draggedConBlockType === 'input'?{
+			id: dropConId+"-"+draggedConId,
 			from: {block:dropConBlockId, output:dropConId},
 			to: {block:draggedConBlockId, input:draggedConId}
 		} : {
+			id: draggedConId+"-"+dropConId,
 			from: {block:draggedConBlockId, output:draggedConId},
 			to: {block:dropConBlockId, input:dropConId}
 		};
@@ -42,9 +43,9 @@ export const stopConDragging = (event, {draggedConBlockType, draggedConBlockId, 
 };
 
 
-function canConnect(con1BlockType,con2BlockType, con1BlockId, von2BlockId){
-	return con1BlockType!==con2BlockType&&con1BlockId!==von2BlockId
+function canConnect(con1BlockType,con2BlockType, con1BlockId, con2BlockId){
+	return con1BlockType!==con2BlockType&&con1BlockId!==con2BlockId
 }
 function connExists(connectionsArr, connection){
-	return connectionsArr.find(conn => (_.isEqual(conn, connection)))!==undefined;
+	return connectionsArr.find(conn => conn.id===connection.id)!==undefined;
 }

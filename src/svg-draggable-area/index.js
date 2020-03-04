@@ -19,11 +19,11 @@ function SvgDraggableArea() {
         ref={svgRef} viewBox="0 0 100 100"
       >
         <rect x="0" y="0" width="100" height="100" fill="#fafafa"/>
-        {connections.map((connection, index) => (
-          <Connection key={index} connection={connection} blocks={blocks} id={index}></Connection>
+        {connections.map((connection) => (
+          <Connection key={connection.from.output+"-"+connection.to.input} {...connection} blocks={blocks}></Connection>
         ))}
-        {blocks.map((block, index) => (
-          <SvgBlock key={index} {...block} id={index}></SvgBlock>
+        {blocks.map((block) => (
+          <SvgBlock key={block.id} {...block}></SvgBlock>
         ))}
         {draggedConBlockType&&<DraggedConnection startPoint={conStartPos} endPoint={conEndPos}></DraggedConnection>}
       </svg>

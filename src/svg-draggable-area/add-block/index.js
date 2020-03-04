@@ -13,7 +13,7 @@ function AddBlock() {
         <button className="closeInventory" onClick={()=>{toggleInventoryVisible(!inventoryVisible)}}>X</button>
         <div className="inventoryHolder">
           {blocks.map(block=>{
-            return <InventoryBlock key={block.type} block={block}></InventoryBlock>
+            return <InventoryBlock key={block.type} block={block} toggleVisibility={toggleInventoryVisible}></InventoryBlock>
           })}
         </div>
       </div>}

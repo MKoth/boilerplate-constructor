@@ -5,21 +5,21 @@ import { getConnectorsAttr, getBlockAttr } from './helpers';
 
 export default function useReduxEvents(svgRef) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  let {blocks, draggedId, offset, draggedConId} = state;
+  let {blocks, draggedIndex, offset, draggedConId} = state;
 
   function start(e){
     const {id} = getBlockAttr(e.target);
     const attrValues = getConnectorsAttr(e.target);
     const {draggedConId, draggedConBlockId, draggedConBlockType} = attrValues;
-    if(!isNaN(id)){
+    if(id){
       dispatch(startDragging(e, blocks, svgRef.current, id)); 
     }
-    else if(!isNaN(draggedConId)&&!isNaN(draggedConBlockId)&&draggedConBlockType){
+    else if(draggedConId&&draggedConBlockId&&draggedConBlockType){
       dispatch(startConDragging(e, svgRef.current, attrValues));
     }
   }
   function dragging(e){
-    if(draggedId!==null){
+    if(draggedIndex!==null){
       dispatch(processDragging(e, svgRef.current, offset));
     }
     else if(draggedConId!==null){
@@ -27,7 +27,7 @@ export default function useReduxEvents(svgRef) {
     }
   }
   function stop(e){
-    if(draggedId!==null){
+    if(draggedIndex!==null){
       dispatch(stopDragging());
     }
     else if(draggedConId!==null){

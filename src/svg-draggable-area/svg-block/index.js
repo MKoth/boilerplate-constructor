@@ -21,10 +21,10 @@ function SvgBlock({x,y, id, inputs, outputs}) {
         style={{strokeWidth:0.2,stroke:"rgb(55,55,55)", fill:"#eeeeee"}}
       />
       {inputs.map((input, index) => (
-        <Connector {...input} type={'input'} key={index} id={index} blockId={id} {...{x,y}}></Connector>
+        <Connector {...input} type={'input'} key={input.id} blockId={id} index={index} {...{x,y}}></Connector>
       ))}
       {outputs.map((output, index) => (
-        <Connector {...output} type={'output'} key={index} id={index} blockId={id} {...{x,y}}></Connector>
+        <Connector {...output} type={'output'} key={output.id} blockId={id} index={index} {...{x,y}}></Connector>
       ))}
     </>
   );

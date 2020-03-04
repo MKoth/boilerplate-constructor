@@ -8,16 +8,17 @@ import mockObject from './mockObject';
 export const initialState = mockObject;
 
 export default function reducer(state=initialState, action={}) {
-	let {blocks, connections, draggedId} = state;
+	let {blocks, connections, draggedIndex} = state;
   switch (action.type) {
 		case START_DRAGGING:
-			let { id, offset } = action.payload;
-			return {...state, draggedId: id, offset};
+			let { index, offset } = action.payload;
+			return {...state, draggedIndex: index, offset};
 		case PROCESS_DRAGGING:
-			blocks[draggedId] = {...blocks[draggedId], ...action.payload};
+
+			blocks[draggedIndex] = {...blocks[draggedIndex], ...action.payload};
 			return {...state, ...{blocks: blocks.slice()}};
 		case STOP_DRAGGING:
-			return {...state, draggedId: null};
+			return {...state, draggedIndex: null};
 		
 		case START_CONNECTION_DRAGGING:
 			return {...state, ...action.payload};
@@ -30,7 +31,8 @@ export default function reducer(state=initialState, action={}) {
 			connections.push(action.payload);
 			return {...state, ...{connections: connections.slice()}};
 		case REMOVE_CONNECTION:
-			connections.splice(connections.indexOf(action.payload), 1);
+			let deletedConn = connections.find(conn=>conn.id===action.payload);
+			connections.splice(connections.indexOf(deletedConn), 1);
 			return {...state, ...{connections: connections.slice()}};
 
 		case ADD_NEW_BLOCK:
