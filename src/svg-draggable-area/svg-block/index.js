@@ -1,5 +1,6 @@
 import React from 'react';
 import Connector from './connector';
+import RemoveBlock from './removeBlock';
 import './index.css';
 import config from '../draggable-area.config';
 
@@ -26,6 +27,7 @@ function SvgBlock({x,y, id, inputs, outputs}) {
       {outputs.map((output, index) => (
         <Connector {...output} type={'output'} key={output.id} blockId={id} index={index} {...{x,y}}></Connector>
       ))}
+      <RemoveBlock {...{id,x,y}}></RemoveBlock>
     </>
   );
 }

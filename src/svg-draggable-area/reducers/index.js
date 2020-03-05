@@ -12,9 +12,10 @@ export default function reducer(state=initialState, action={}) {
   switch (action.type) {
 		case START_DRAGGING:
 			let { index, offset } = action.payload;
-			return {...state, draggedIndex: index, offset};
+			//reordering blocks so the dragged block would be last in array and thus rendered last and gonna be visible
+			blocks.push(blocks.splice(index, 1)[0]);
+			return {...state, draggedIndex: blocks.length - 1, offset, ...{blocks: blocks.slice()}};
 		case PROCESS_DRAGGING:
-
 			blocks[draggedIndex] = {...blocks[draggedIndex], ...action.payload};
 			return {...state, ...{blocks: blocks.slice()}};
 		case STOP_DRAGGING:
