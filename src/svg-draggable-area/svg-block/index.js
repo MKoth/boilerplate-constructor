@@ -1,10 +1,12 @@
 import React from 'react';
 import Connector from './connector';
 import RemoveBlock from './removeBlock';
+import EditBlock from './editBlock';
+import BlockName from './blockName';
 import './index.css';
 import config from '../draggable-area.config';
 
-function SvgBlock({x,y, id, inputs, outputs}) {
+function SvgBlock({x,y, id, inputs, outputs, name}) {
   function calculateBlockHeight(){
     const halfHeight = config.minBlockHeight/2;
     const inQuant = inputs.length;
@@ -28,6 +30,8 @@ function SvgBlock({x,y, id, inputs, outputs}) {
         <Connector {...output} type={'output'} key={output.id} blockId={id} index={index} {...{x,y}}></Connector>
       ))}
       <RemoveBlock {...{id,x,y}}></RemoveBlock>
+      <EditBlock {...{id,x,y}}></EditBlock>
+      <BlockName {...{x,y, name}}></BlockName>
     </>
   );
 }

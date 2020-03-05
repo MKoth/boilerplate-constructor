@@ -1,3 +1,26 @@
 .connectable {
     cursor: pointer;
 }
+.blockName{
+    font-size: 2px;
+    fill: #345ca0;
+    text-transform: uppercase;
+    font-weight: 500;
+    pointer-events: none;
+    -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+.connectionName{
+    font-size: 1.2px;
+    fill: #345ca0;
+    text-transform: uppercase;
+    font-weight: 500;
+    pointer-events: none;
+    -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   
+}

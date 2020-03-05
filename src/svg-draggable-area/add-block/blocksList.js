@@ -17,7 +17,7 @@ export default [
       {id:"twitter_sole", type:"text", data:{name:"Twitter Sole", value:""}, displayIf:{id:"twitter", equals:true}},
       {id:"login", type:"text", data:{name:"Admin login", value:"admin"}},
       {id:"password", type:"password", data:{name:"Admin password", value:""}},
-      {id:"role", type:"set", data:{name:"Add role", fields:["role_name"]}},
+      {id:"role", type:"set", data:{name:"Add role", fields:["role_name"], connectedTo:'output', connectedBy:'role_name'}},
       {id:"role_name", type:"text", data:{name:"Role name", value:"", noRepeat:true}}
     ],
     sets_values:[],
@@ -26,8 +26,7 @@ export default [
       {id:"admin_page", name:"Admin page"},
       {id:"admin", name:"Admin"},
       {id:"guest", name:"Guest"},
-      {id:"user", name:"User"},
-      {id:"%role_name%", name:"%role_name%", type:"set_connected", set:"role"}
+      {id:"user", name:"User"}
     ],
     inputs:[]
   },
