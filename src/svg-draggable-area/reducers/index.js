@@ -1,7 +1,7 @@
 import {
 	START_DRAGGING, STOP_DRAGGING, PROCESS_DRAGGING,
 	START_CONNECTION_DRAGGING, PROCESS_CONNECTION_DRAGGING, STOP_CONNECTION_DRAGGING,
-	ADD_NEW_CONNECTION, REMOVE_CONNECTION, ADD_NEW_BLOCK
+	ADD_NEW_CONNECTION, REMOVE_CONNECTION, ADD_NEW_BLOCK, REMOVE_BLOCK
 } from "../actions/actionTypes";
 import mockObject from './mockObject';
 
@@ -39,6 +39,10 @@ export default function reducer(state=initialState, action={}) {
 		case ADD_NEW_BLOCK:
 			blocks.push(action.payload.block);
 			return {...state, ...{blocks: blocks.slice()}};
+		case REMOVE_BLOCK:
+			connections = connections.filter(conn=>conn.from.block!==action.payload.id&&conn.to.block!==action.payload)
+			blocks = blocks.filter(block=>block.id!==action.payload);
+			return {...state, ...{blocks, connections}};
 		default:
 			return state;
 	}

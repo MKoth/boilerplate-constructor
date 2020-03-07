@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
 import config from '../draggable-area.config';
 import DispatchSvgContext from '../dispatchSvgContext';
-import { REMOVE_CONNECTION } from '../actions/actionTypes';
+import { REMOVE_BLOCK } from '../actions/actionTypes';
 import './index.css';
 
 function RemoveBlock({x, y, id}) {
   const dispatch = useContext(DispatchSvgContext);
   function removeBlock(){
-    console.log("remove block "+id);
+    dispatch({type: REMOVE_BLOCK, payload:id});
   }
   return (
 		<svg fill="#ff0000" onClick={removeBlock} x={x+config.minBlockwidth-2.5-config.inputOutputRad} y={y-2.5} viewBox="0 0 17000 17000" className="deletable">

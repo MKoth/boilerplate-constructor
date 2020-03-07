@@ -12,3 +12,4 @@ export const ADD_NEW_CONNECTION = `${prefix}ADD_NEW_CONNECTION`;
 export const REMOVE_CONNECTION = `${prefix}REMOVE_CONNECTION`;
 
 export const ADD_NEW_BLOCK = `${prefix}ADD_NEW_BLOCK`;
+export const REMOVE_BLOCK = `${prefix}REMOVE_BLOCK`;
