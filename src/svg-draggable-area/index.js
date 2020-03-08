@@ -3,20 +3,16 @@ import './index.css';
 import SvgBlock from './svg-block';
 import Connection from "./svg-connection";
 import DraggedConnection from './svg-connection/draggedConnection';
-import useReduxEvents from "./useReduxEvents";
-import DispatchSvgContext from "./dispatchSvgContext";
 import AddBlock from "./add-block";
 
-function SvgDraggableArea() {
-  let svgRef = React.createRef();
-  const {start, stop, dragging, state, dispatch} = useReduxEvents(svgRef);
-  const {draggedConBlockType, conStartPos, conEndPos, blocks, connections} = state;
+function SvgDraggableArea({dragEvts, blocks, connections, drgConnParams, forwardRef}) {
+  //let svgRef = React.createRef();
   return (
-    <DispatchSvgContext.Provider value={dispatch}>
+    <>
       <AddBlock></AddBlock>
       <svg xmlns="http://www.w3.org/2000/svg"
-        onMouseDown={start} onMouseMove={dragging} onMouseUp={stop}
-        ref={svgRef} viewBox="0 0 100 100"
+        onMouseDown={dragEvts.start} onMouseMove={dragEvts.dragging} onMouseUp={dragEvts.stop}
+        ref={forwardRef} viewBox="0 0 100 100"
       >
         <rect x="0" y="0" width="100" height="100" fill="#fafafa"/>
         {connections.map((connection) => (
@@ -25,9 +21,9 @@ function SvgDraggableArea() {
         {blocks.map((block) => (
           <SvgBlock key={block.id} {...block}></SvgBlock>
         ))}
-        {draggedConBlockType&&<DraggedConnection startPoint={conStartPos} endPoint={conEndPos}></DraggedConnection>}
+        {drgConnParams.draggedConBlockType&&<DraggedConnection startPoint={drgConnParams.conStartPos} endPoint={drgConnParams.conEndPos}></DraggedConnection>}
       </svg>
-    </DispatchSvgContext.Provider>
+    </>
   );
 }
 

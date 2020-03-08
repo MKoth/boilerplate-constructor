@@ -3,7 +3,7 @@ import config from '../draggable-area.config';
 import RemoveConnection from './removeConnection';
 
 function Connection(props) {
-	const {blocks, from, to, id} = props;
+	const {blocks, from, to} = props;
 	function getLineStart(){
 		const fromBlock =  blocks.find(block=>block.id===from.block);
 		const outputConn = fromBlock.outputs.find(output=>output.id===from.output);

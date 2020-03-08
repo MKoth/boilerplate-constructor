@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React /*, {useContext}*/ from 'react';
 import config from '../draggable-area.config';
-import DispatchSvgContext from '../dispatchSvgContext';
-import { REMOVE_CONNECTION } from '../actions/actionTypes';
+//import DispatchSvgContext from '../dispatchSvgContext';
+//import { REMOVE_CONNECTION } from '../actions/actionTypes';
 import './index.css';
 
 function EditBlock({x, y, id}) {
-  const dispatch = useContext(DispatchSvgContext);
+  //const dispatch = useContext(DispatchSvgContext);
   function editBlock(){
     console.log("edit block "+id);
   }

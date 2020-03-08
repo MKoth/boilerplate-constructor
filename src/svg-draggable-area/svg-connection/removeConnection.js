@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import config from '../draggable-area.config';
-import DispatchSvgContext from '../dispatchSvgContext';
-import { REMOVE_CONNECTION } from '../actions/actionTypes';
+import DispatchContext from '../../dispatchContext';
+import { REMOVE_CONNECTION } from '../../actions/actionTypes';
 import './index.css';
 
 function RemoveConnection(props) {
 	const {blocks, from, to, id} = props;
-	const dispatch = useContext(DispatchSvgContext);
+	const dispatch = useContext(DispatchContext);
 	function getLineStart(){
 		const fromBlock =  blocks.find(block=>block.id===from.block);
 		const outputConn = fromBlock.outputs.find(output=>output.id===from.output);

@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import config from '../draggable-area.config';
-import DispatchSvgContext from '../dispatchSvgContext';
-import { REMOVE_BLOCK } from '../actions/actionTypes';
+import DispatchContext from '../../dispatchContext';
+import { REMOVE_BLOCK } from '../../actions/actionTypes';
 import './index.css';
 
 function RemoveBlock({x, y, id}) {
-  const dispatch = useContext(DispatchSvgContext);
+  const dispatch = useContext(DispatchContext);
   function removeBlock(){
     dispatch({type: REMOVE_BLOCK, payload:id});
   }

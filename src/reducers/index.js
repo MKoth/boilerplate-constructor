@@ -40,7 +40,7 @@ export default function reducer(state=initialState, action={}) {
 			blocks.push(action.payload.block);
 			return {...state, ...{blocks: blocks.slice()}};
 		case REMOVE_BLOCK:
-			connections = connections.filter(conn=>conn.from.block!==action.payload.id&&conn.to.block!==action.payload)
+			connections = connections.filter(conn=>conn.from.block!==action.payload&&conn.to.block!==action.payload)
 			blocks = blocks.filter(block=>block.id!==action.payload);
 			return {...state, ...{blocks, connections}};
 		default:
