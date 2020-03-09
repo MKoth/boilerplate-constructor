@@ -1,13 +1,13 @@
-import React /*, {useContext}*/ from 'react';
+import React , {useContext} from 'react';
 import config from '../draggable-area.config';
-//import DispatchSvgContext from '../dispatchSvgContext';
-//import { REMOVE_CONNECTION } from '../actions/actionTypes';
+import DispatchContext from '../../dispatchContext';
+import { OPEN_EDIT_DIALOG } from '../../actions/actionTypes';
 import './index.css';
 
 function EditBlock({x, y, id}) {
-  //const dispatch = useContext(DispatchSvgContext);
+  const dispatch = useContext(DispatchContext);
   function editBlock(){
-    console.log("edit block "+id);
+    dispatch({type:OPEN_EDIT_DIALOG, payload: id});
   }
   return (
 		<svg onClick={editBlock} x={x+config.minBlockwidth-7-config.inputOutputRad} y={y-2.5} viewBox="0 0 600 600" className="deletable">

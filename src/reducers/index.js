@@ -1,14 +1,14 @@
 import {
 	START_DRAGGING, STOP_DRAGGING, PROCESS_DRAGGING,
 	START_CONNECTION_DRAGGING, PROCESS_CONNECTION_DRAGGING, STOP_CONNECTION_DRAGGING,
-	ADD_NEW_CONNECTION, REMOVE_CONNECTION, ADD_NEW_BLOCK, REMOVE_BLOCK
+	ADD_NEW_CONNECTION, REMOVE_CONNECTION, ADD_NEW_BLOCK, REMOVE_BLOCK, OPEN_EDIT_DIALOG, CLOSE_EDIT_DIALOG
 } from "../actions/actionTypes";
 import mockObject from './mockObject';
 
 export const initialState = mockObject;
 
 export default function reducer(state=initialState, action={}) {
-	let {blocks, connections, draggedIndex} = state;
+	let {blocks, connections, draggedIndex, blockEdited} = state;
   switch (action.type) {
 		case START_DRAGGING:
 			let { index, offset } = action.payload;
@@ -43,6 +43,13 @@ export default function reducer(state=initialState, action={}) {
 			connections = connections.filter(conn=>conn.from.block!==action.payload&&conn.to.block!==action.payload)
 			blocks = blocks.filter(block=>block.id!==action.payload);
 			return {...state, ...{blocks, connections}};
+
+		case OPEN_EDIT_DIALOG:
+			blockEdited = blocks.find(block=>block.id===action.payload);
+			console.log(blockEdited);
+			return {...state, ...{blockEdited}};
+		case CLOSE_EDIT_DIALOG:
+			return {...state, ...{blockEdited: null}};
 		default:
 			return state;
 	}

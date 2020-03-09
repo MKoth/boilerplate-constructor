@@ -13,3 +13,6 @@ export const REMOVE_CONNECTION = `${prefix}REMOVE_CONNECTION`;
 
 export const ADD_NEW_BLOCK = `${prefix}ADD_NEW_BLOCK`;
 export const REMOVE_BLOCK = `${prefix}REMOVE_BLOCK`;
+
+export const OPEN_EDIT_DIALOG = `${prefix}OPEN_EDIT_DIALOG`;
+export const CLOSE_EDIT_DIALOG = `${prefix}CLOSE_EDIT_DIALOG`;
